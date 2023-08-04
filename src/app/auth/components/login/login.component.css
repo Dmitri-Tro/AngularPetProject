@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid blue;
+  border-radius: 10px;
+  max-width: 400px;
+  height: 300px;
+  padding: 10px;
+  margin: 100px auto;
+}
+
+.form_input {
+  border: 1px solid blue;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  color: blue;
+  width: 100%;
+}
+.form_input::placeholder {
+  padding: 10px;
+  color: blue;
+}
+
+.form_btn {
+  background-color: blue;
+  border: 1px solid blue;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 30px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.form_notifications {
+  font-size: 14px;
+  color: red;
+}

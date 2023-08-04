@@ -1,0 +1,7 @@
+.logout {
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+  color: white;
+  padding: 10px;
+}

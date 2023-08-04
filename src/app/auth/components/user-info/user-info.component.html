@@ -1,0 +1,11 @@
+<div class="container" *ngIf="currentUser">
+  <div mat-dialog-content>
+    <img class="avatar" alt="avatar" [src]="currentUser.userAvatar">
+  </div>
+  <div mat-dialog-content>
+    <span class="name">{{ currentUser.userName }}</span>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
+</div>

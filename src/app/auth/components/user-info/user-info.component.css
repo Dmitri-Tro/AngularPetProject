@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+  color: white;
+  padding: 10px;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 100px;
+}
+
+.name {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+#cdk-overlay-1 {
+  width: 800px;
+}

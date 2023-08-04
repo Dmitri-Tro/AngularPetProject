@@ -1,0 +1,22 @@
+<div class="post" *ngIf="post">
+  <h2 class="post_title">{{ post.postTitle }}</h2>
+  <p class="post_text" [innerHTML]="post.postText"></p>
+  <img class="post_img" [src]="post.postImg" alt="Post Image">
+  <div class="comments">
+    <form class="comment_form" [formGroup]="commentForm" (ngSubmit)="onCommentSubmit()">
+      <label>
+        <input
+          class="comment_form__input"
+          type="text"
+          placeholder="Enter your comment"
+          formControlName="comment"
+          required
+          />
+      </label>
+      <button class="comment_form__btn" type="submit" [disabled]="commentForm.invalid">Submit</button>
+    </form>
+    <div class="submitted_comments" *ngFor="let comment of post.postComments as comments">
+      <span>{{comment.commentText}}</span>
+    </div>
+  </div>
+</div>

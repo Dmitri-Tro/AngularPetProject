@@ -1,0 +1,41 @@
+<form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="form">
+  <label>
+    <input
+      class="form_input"
+      type="text"
+      placeholder="E-mail"
+      formControlName="email"
+      required
+      [ngClass]="{
+          inputError: email!.invalid && (email!.dirty || email!.touched),
+          inputSuccess: email!.valid
+        }"
+    />
+  </label>
+
+  <div *ngIf="email!.invalid && (email!.dirty || email!.touched)" class="error">
+    <span class="form_notifications" *ngIf="email!.errors?.['required']">Email is required</span>
+    <span class="form_notifications" *ngIf="email!.errors?.['pattern']">Email incorrect pattern</span>
+  </div>
+
+  <label>
+    <input
+      class="form_input"
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+      required
+      [ngClass]="{
+          inputError: password!.invalid && (password!.dirty || password!.touched),
+          inputSuccess: password!.valid
+        }"
+    />
+  </label>
+
+  <div *ngIf="password!.invalid && (password!.dirty || password!.touched)" class="error">
+    <span class="form_notifications" *ngIf="password!.errors?.['required']">Password is required</span>
+    <span class="form_notifications" *ngIf="password!.errors?.['minLength']">Name must be at least 3 characters long</span>
+  </div>
+
+  <button class="form_btn" type="submit" [disabled]="loginForm.invalid">Sign in</button>
+</form>
