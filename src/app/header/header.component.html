@@ -2,17 +2,24 @@
   <img class="logo" ngSrc="../../assets/img/logo.png" alt="logo" height="500" width="500">
   <nav class="nav">
     <ul class="nav_list">
-      <li class="nav_list__item"><button class="nav_list__item__button" (click)="goToPosts()">Posts</button></li>
-      <li class="nav_list__item"><button class="nav_list__item__button">Create new post</button></li>
-      <li class="nav_list__item"><button class="nav_list__item__button">Subscriptions</button></li>
+      <li class="nav_list__item">
+        <button class="nav_list__item__button" (click)="goToPosts()">Posts</button>
+      </li>
+      <li class="nav_list__item">
+        <button class="nav_list__item__button" (click)="goToCreateNewPost()">Create new post</button>
+      </li>
+      <li class="nav_list__item">
+        <button class="nav_list__item__button" (click)="goToSubscriptions()">Subscriptions</button>
+      </li>
     </ul>
   </nav>
-  <a  (click)="openDialog(UserInfoComponent)">
+  <a (click)="openDialog(UserInfoComponent)">
     <div class="user" *ngIf="currentUser">
       <img class="user_avatar" alt="avatar" [ngSrc]="currentUser.userAvatar" height="500" width="500">
       <span class="user_name">{{currentUser.userName}}</span>
     </div>
   </a>
-  <button class="logout" (click)="logout()">Logout</button>
+  <button class="logout" *ngIf="currentUser" (click)="logout()">Logout</button>
+  <button class="logout" *ngIf="!currentUser" (click)="login()">Login</button>
 </div>
 <router-outlet></router-outlet>

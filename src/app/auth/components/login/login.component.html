@@ -34,7 +34,8 @@
 
   <div *ngIf="password!.invalid && (password!.dirty || password!.touched)" class="error">
     <span class="form_notifications" *ngIf="password!.errors?.['required']">Password is required</span>
-    <span class="form_notifications" *ngIf="password!.errors?.['minLength']">Name must be at least 3 characters long</span>
+    <span class="form_notifications"
+          *ngIf="password!.errors?.['minLength']">Name must be at least 3 characters long</span>
   </div>
 
   <button class="form_btn" type="submit" [disabled]="loginForm.invalid">Sign in</button>

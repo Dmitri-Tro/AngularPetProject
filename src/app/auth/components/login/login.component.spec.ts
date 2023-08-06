@@ -18,4 +18,12 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call authService.login and loggerService.log when onLoginSubmit is called', () => {
+    const email = 'test@test.com';
+    const password = '1234';
+
+    component.loginForm.setValue({email, password});
+    component.onLoginSubmit();
+  });
 });

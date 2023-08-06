@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core'
-import { HttpClient, HttpErrorResponse } from '@angular/common/http'
-import { Router } from '@angular/router'
-import { EMPTY } from 'rxjs'
-import { catchError } from 'rxjs/operators'
+import {Injectable} from '@angular/core'
+import {HttpClient, HttpErrorResponse} from '@angular/common/http'
+import {Router} from '@angular/router'
+import {EMPTY} from 'rxjs'
+import {catchError} from 'rxjs/operators'
 import {CommonResponseType, LoginRequestData} from "../../models/auth.models";
 import {ResultCodeEnum} from "../../../enums/resultCode.enum";
 import {NotificationService} from "../notification/notification.service";
@@ -16,28 +16,31 @@ import {User} from "../../../Data/user.interface";
 @Injectable()
 export class AuthService {
   baseUrl = 'https://example.com/';
-  isLoggedIn: boolean = false
+  isLoggedIn: boolean = false;
   currentUser: User | null = null;
 
 
-  resolveAuthRequest: Function = () => {}
+  resolveAuthRequest: Function = () => {
+  };
 
   authRequest = new Promise(resolve => {
-    this.resolveAuthRequest = resolve
-  })
+    this.resolveAuthRequest = resolve;
+  });
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private notificationService: NotificationService,
     private dialog: MatDialog,
-  ) {}
+  ) {
+  };
+
   public getRouter(): Router {
     return this.router;
-  }
+  };
+
   login(data: LoginRequestData) {
     const user = userLoginData.find(user => user.userEmail === data.email && user.userPassword === data.password);
-
     if (user) {
       // Если данные верны, появляется окно с данными пользователя.
       this.currentUser = user;
@@ -46,8 +49,6 @@ export class AuthService {
       setTimeout(() => {
         this.router.navigateByUrl('/posts');
       }, 1000);
-      console.log('Yes');
-      console.log('login works!');
       // Защита авторизации:
       this.isLoggedIn = true;
     } else {
@@ -56,7 +57,6 @@ export class AuthService {
       this.openDialog(AuthErrorComponent);
       // Защита авторизации:
       this.isLoggedIn = false;
-      console.log('No')
     }
     // А это уже запрос на сервер
     this.http
@@ -67,10 +67,11 @@ export class AuthService {
           this.router.navigate(['/posts']);
           this.isLoggedIn = true;
         } else {
-          this.notificationService.handleError(res.messages[0])
+          this.notificationService.handleError(res.messages[0]);
         }
       });
-  }
+  };
+
   logout() {
     this.isLoggedIn = false;
     this.currentUser = null;
@@ -79,17 +80,17 @@ export class AuthService {
       .pipe(catchError(this.errorHandler.bind(this)))
       .subscribe(res => {
         if (res.resultCode === ResultCodeEnum.success) {
-          this.router.navigate(['/'])
+          this.router.navigate(['/login']);
         }
       });
-  }
+  };
 
   private errorHandler(err: HttpErrorResponse) {
-    this.notificationService.handleError(err.message)
-    return EMPTY
+    this.notificationService.handleError(err.message);
+    return EMPTY;
   }
 
   openDialog(component: any): void {
     this.dialog.open(component);
-  }
-}
+  };
+};

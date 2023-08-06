@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth/auth.service";
 import {Router} from "@angular/router";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +21,8 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-  ) {}
+  ) {
+  }
 
   get email() {
     return this.loginForm.get('email');
@@ -34,6 +36,5 @@ export class LoginComponent {
     // Здесь - запрос на сервер для аутентификации
     const value = this.loginForm.value;
     this.authService.login(value);
-    console.log('onLoginSubmit works!')
   }
 }

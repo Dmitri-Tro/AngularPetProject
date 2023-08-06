@@ -1,1 +1,38 @@
-<p>new-post works!</p>
+<div class="container">
+  <form class="post_form" [formGroup]="postForm" (ngSubmit)="onPostSubmit()">
+    <label>
+      <select class="post_form__select" formControlName="newPostCategory">
+        <option disabled selected value="">Select category</option>
+        <option *ngFor="let postCategory of postCategories"
+                [value]="postCategory.value">{{ postCategory.label }}</option>
+      </select>
+    </label>
+    <label>
+      <input
+        class="post_form__title"
+        type="text"
+        placeholder="Enter a title of your new post"
+        formControlName="newPostTitle"
+        required
+      />
+    </label>
+    <label>
+      <textarea
+        class="post_form__text"
+        type="text"
+        placeholder="Enter your new post"
+        formControlName="newPost"
+        required
+      ></textarea>
+    </label>
+    <label>
+      <input
+        class="post_form__image-input"
+        type="file"
+        (change)="onImageSelected($event)"
+      />
+    </label>
+    <img *ngIf="selectedImage" alt="Selected Image" class="post_form__selected-image">
+    <button class="post_form__btn" type="submit" [disabled]="postForm.invalid">Submit post</button>
+  </form>
+</div>

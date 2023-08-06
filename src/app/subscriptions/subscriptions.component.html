@@ -1,1 +1,20 @@
-<p>subscriptions works!</p>
+<div class="container">
+  <div class="subscription_wrapper" (click)="onSelectSubscription(subscriptionType.type)"
+       *ngFor="let subscriptionType of subscriptionsData">
+    <a class="subscription_type">{{subscriptionType.type}}</a>
+    <span class="subscription_type__note">Click here for details</span>
+
+  </div>
+</div>
+
+<div class="conditions_wrapper" *ngIf="subscription">
+  <ul class="conditions_list">
+    <li class="conditions_item" *ngFor="let condition of subscription.conditions | keyvalue">
+      <span>{{ condition.value.name }}: {{ condition.value.value }}</span>
+    </li>
+  </ul>
+  <div class="cost">
+    <span class="cost_name">{{ subscription.cost.name }}: </span>
+    <span class="cost_value">{{ subscription.cost.value }}</span>
+  </div>
+</div>

@@ -11,7 +11,7 @@ export class UserInfoComponent {
   protected readonly userLoginData = userLoginData;
 
   constructor(
-    @Inject(AuthService) private auth: AuthService
+    @Inject(AuthService) private auth: AuthService,
   ) {}
   isLoggedIn = this.auth.isLoggedIn;
   get currentUser() {

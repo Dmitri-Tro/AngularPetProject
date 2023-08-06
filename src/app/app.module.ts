@@ -9,15 +9,17 @@ import { NewPostModule } from './new-post/new-post.module';
 import {NgOptimizedImage} from "@angular/common";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
-import {AuthGuard} from "./auth/services/auth/auth.guard";
+import {AuthGuard} from "./auth.guard";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    RouterModule,
+    BrowserModule,
     AuthModule,
     MainPageModule,
     SubscriptionsModule,
@@ -27,7 +29,7 @@ import {AuthGuard} from "./auth/services/auth/auth.guard";
     HttpClientModule,
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
   ],
 
   exports: [],

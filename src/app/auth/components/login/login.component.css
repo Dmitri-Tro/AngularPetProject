@@ -19,6 +19,7 @@
   color: blue;
   width: 100%;
 }
+
 .form_input::placeholder {
   padding: 10px;
   color: blue;
